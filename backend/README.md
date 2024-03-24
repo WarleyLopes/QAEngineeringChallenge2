@@ -75,3 +75,10 @@ You can add and run tests to ensure the correctness of the API. Follow these ste
 ## Customization
 
 You can customize machine data and health evaluation logic by modifying the `machineData.json` file and the calculation functions in `app.ts`.
+
+## Contributing
+
+We have set up precommit hooks that will execute prettier, eslint, and jest. Which will automatically require that all tests pass before you can commit and push your changes.
+
+For the sake of this challenge, that will be my approach to the below task:
+> 5. **Regression Testing**: Implement a basic regression testing strategy that can be run with each new release.
