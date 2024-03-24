@@ -10,7 +10,7 @@
     "test": "jest --coverage components/__tests__/*.test* ",
     "detox:test": "detox test --configuration ios.debug --record-logs failing --record-videos failing --take-screenshots failing",
     "detox:build": "detox build --configuration ios.debug",
-    "detox": "yarn e2e_ios:build && yarn e2e_ios:test",
+    "detox": "yarn detox:build && yarn detox:test",
     "lint": "lint-staged"
   },
   "jest": {
