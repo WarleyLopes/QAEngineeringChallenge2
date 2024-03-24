@@ -1,19 +1,19 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {Button, Platform, StyleSheet, TextInput} from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Button, Platform, StyleSheet, TextInput } from 'react-native';
 
-import {Text, View} from './Themed';
+import { Text, View } from './Themed';
 import axios from 'axios';
 import Constants from 'expo-constants';
 import RNPickerSelect from 'react-native-picker-select';
 import machineData from '../data/machineData.json';
-import {MachineType, machineNames} from '../data/types';
+import { MachineType, machineNames } from '../data/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useMachineData} from '../app/useMachineData';
-import {useFocusEffect} from 'expo-router';
+import { useMachineData } from '../app/useMachineData';
+import { useFocusEffect } from 'expo-router';
 
 export const MachineScore = ({
   machineName,
-  score,
+  score
 }: {
   machineName: string;
   score: string;
@@ -23,8 +23,8 @@ export const MachineScore = ({
       {score && (
         <>
           <Text
-            style={styles.text}
-          >{`${machineNames[machineName]}: ${score}`}</Text>
+            testID="ComponentMachineScoreText"
+            style={styles.text}>{`${machineNames[machineName]}: ${score}`}</Text>
         </>
       )}
     </>
@@ -32,5 +32,5 @@ export const MachineScore = ({
 };
 
 const styles = StyleSheet.create({
-  text: {},
+  text: {}
 });
