@@ -73,9 +73,9 @@ In order to run the e2e, it is required:
 
  - Having all yarn packages dependencies installed with `yarn`
  - Having ios pods installed with `cd ios && pod install && cd ..` or run `yarn ios` before proceeding
- - Run `yarn e2e` to run both the build and the tests
-    - Or first run `yarn e2e:build`
-    - And then `yarn e2e:test` to run the e2e detox tests
+ - Run `yarn detox` to run both the build and the tests
+    - Or first run `yarn detox:build`
+    - And then `yarn detox:test` to run the e2e detox tests
 
  <!-- * If testing on Android, a Pixel 3a android simulator running on API 31 and CPU arch x86_64 named `Pixel_3a_API_31_x86_64` on Android Studios' Virtual Device Manager
     Or you can get around by creating it, if you have the dependencies installed locally, with the command `avdmanager create avd --name 'Pixel_3a_API_31_x86_64' --package "system-images;android-31;google_apis;x86_64" --tag google_apis --device pixel_3a` and `emulator -avd Pixel_3a_API_31_x86_64`. Still, it is necessary to have the sdk `system-images;android-31;google_apis;x86_64` installed previously either through command line or Android Studio. -->
