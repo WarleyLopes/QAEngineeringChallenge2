@@ -131,3 +131,9 @@ dist
 
 # Local Netlify folder
 .netlify
+
+# detox artifacts
+native-app/artifacts
+
+# snapshot artifact
+native-app/components/__tests__/__snapshots__/**.snap
