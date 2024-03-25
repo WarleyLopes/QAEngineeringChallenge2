@@ -84,6 +84,10 @@ In order to run the e2e, it is required:
 
 ## Troubleshooting
 
+- To check artifacts of the detox e2e test runs, you can navigate to the artifacts folder
+after running tests and it will have a folder for your latest run containing logs,screenshots,
+and a video. The final test report in xml can be found in `artifacts/reports/test_results.xml`
+
 - When running e2e_android:test, if the error below happens:
 
     > Test suite failed to run ChildProcessError: .../Library/Android/sdk/emulator/emulator -verbose -no-audio -no-boot-anim -read-only -port 16072 @Pixel_3a_API_31_x86_64` failed with code 1

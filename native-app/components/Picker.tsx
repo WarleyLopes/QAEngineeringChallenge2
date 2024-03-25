@@ -1,10 +1,13 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
-function PickerIos({value, onSetValue, items}) {
+function PickerIos({ value, onSetValue, items }) {
   return (
     <RNPickerSelect
-      placeholder={{label: 'Select a machine', value: ''}}
+      touchableWrapperProps={{ testID: 'ComponentPickerIosTouchableWrapper' }}
+      pickerProps={{ testID: 'ComponentPickerIos' }}
+      touchableDoneProps={{ testID: 'ComponentPickerIosDone' }}
+      placeholder={{ label: 'Select a machine', value: '' }}
       items={items}
       onValueChange={(value) => onSetValue(value)}
       value={value}
@@ -22,7 +25,7 @@ const pickerSelectStyles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 4,
     color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingRight: 30 // to ensure the text is never behind the icon
   },
   inputAndroid: {
     fontSize: 16,
@@ -33,8 +36,8 @@ const pickerSelectStyles = StyleSheet.create({
     borderRadius: 8,
     color: 'black',
     paddingRight: 30, // to ensure the text is never behind the icon
-    minWidth: 200,
-  },
+    minWidth: 200
+  }
 });
 
 export default PickerIos;
