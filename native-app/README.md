@@ -4,9 +4,7 @@ This repository showcases mobile test automation for a React Native project usin
 
 ## Detox Demonstration
 
-![detox-demo](./artifacts/detox-demo.mov)
-
-![detox-demo](./artifacts/detox-demo.mp4)
+![Detox Demonstration](./artifacts/detox-demo.gif)
 
 ## Table of Contents
 
