@@ -1,10 +1,11 @@
 import React from 'react';
 import { MachineScore } from '../MachineScore';
 import renderer from 'react-test-renderer';
+import { MachineType, machineNames } from '../../data/types';
 
 describe('MachineScore', () => {
   it('should render the machine name and score', () => {
-    const machineName = 'Machine A';
+    const machineName = MachineType.WeldingRobot;
     const score = '10';
 
     const tree = renderer.create(
@@ -13,6 +14,6 @@ describe('MachineScore', () => {
 
     expect(
       tree.root.findByProps({ testID: 'ComponentMachineScoreText' }).props.children
-    ).toBe('Machine A: 10');
+    ).toBe(`${machineNames[machineName]}: ${score}`);
   });
 });

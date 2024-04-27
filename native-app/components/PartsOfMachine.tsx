@@ -1,19 +1,19 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {Button, Platform, StyleSheet, TextInput} from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Button, Platform, StyleSheet, TextInput } from 'react-native';
 
-import {Text, View} from './Themed';
+import { Text, View } from './Themed';
 import axios from 'axios';
 import Constants from 'expo-constants';
 import RNPickerSelect from 'react-native-picker-select';
 import machineData from '../data/machineData.json';
-import {MachineType} from '../data/types';
+import { MachineType } from '../data/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useMachineData} from '../app/useMachineData';
-import {useFocusEffect} from 'expo-router';
+import { useMachineData } from '../app/useMachineData';
+import { useFocusEffect } from 'expo-router';
 
 export const PartsOfMachine = ({
   machineName,
-  parts,
+  parts
 }: {
   machineName: string;
   parts: Record<string, string>;
@@ -24,7 +24,7 @@ export const PartsOfMachine = ({
         <>
           <Text style={styles.title}>{machineName}</Text>
           {Object.keys(parts).map((key) => (
-            <Text key={key}>
+            <Text testID="ComponentPartsOfMachine" key={key}>
               {key}: {parts[key]}
             </Text>
           ))}
@@ -37,6 +37,6 @@ export const PartsOfMachine = ({
 const styles = StyleSheet.create({
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
-  },
+    fontWeight: 'bold'
+  }
 });

@@ -22,7 +22,9 @@ export const MachineScore = ({
     <>
       {score && (
         <>
-          <Text style={styles.text}>{`${machineNames[machineName]}: ${score}`}</Text>
+          <Text
+            testID="ComponentMachineScoreText"
+            style={styles.text}>{`${machineNames[machineName]}: ${score}`}</Text>
         </>
       )}
     </>

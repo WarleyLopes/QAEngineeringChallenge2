@@ -1,105 +1,60 @@
-# Machine Health App (React Native Expo)
+# Mobile Test Automation for React Native Project
 
-Welcome to the Machine Health App, a React Native Expo project designed to evaluate the health of various machines in an automobile factory. This README will guide you on setting up and running the app, as well as understanding its structure.
+This repository showcases mobile test automation for a React Native project using the Detox framework. It also includes unit tests for components in the mobile app, as well as unit tests and test automation for the API.
 
-## Getting Started
+## Detox Demonstration
 
-To get started with the app, follow these steps:
+![detox-demo](./artifacts/detox-demo.mov)
 
-### Prerequisites
+![detox-demo](./artifacts/detox-demo.mp4)
 
-Before you begin, make sure you have the following software installed on your development machine:
+## Table of Contents
 
-- [Node.js](https://nodejs.org/) (LTS version recommended)
-- [Yarn](https://classic.yarnpkg.com/en/docs/install/) (package manager)
-- [Expo CLI](https://docs.expo.dev/get-started/installation/) (for running Expo projects)
+- [Mobile Test Automation - Detox](./e2e/starter.test.js)
+- [Unit Tests for Components - Jest](./components/__tests__/MachineScore.test.tsx)
+- [Detox Artifacts](./artifacts/)
+- [Jest Test Coverage from Unit Tests - Mobile App](./coverage/lcov-report/index.html)
+- [Mobile Components/UI Snapshots](./components/__tests__/__snapshots__/)
+- [Coding Test Challenge](https://github.com/BellSantCodingChallenge/QAEngineeringChallenge2?tab=readme-ov-file#bellsant-qa-engineer-coding-challenge)
 
-### Installation
+## Introduction
 
-```bash
-yarn
-```
+In this repository, you will find a comprehensive set of tests for a React Native project. The tests cover both the mobile app and the API, ensuring the quality and reliability of the software.
 
-### Running the App
+## Mobile Test Automation
 
-To run the app, use the following command:
+The mobile test automation is implemented using the Detox framework. Detox provides a powerful and efficient way to write end-to-end tests in either JavaScript or TypeScript for React Native applications in order to run tests for both iOS and Android with the same code. The tests simulate user interactions and verify the expected behavior of the app.
 
-```bash
-yarn start
-```
+To run the mobile test automation, follow these steps:
 
-This will launch the Expo development server, and you can access the app on your device using the Expo Go app or an emulator. You can hit `i` or `a` on the keyboard to launch the ios or android app respectively.
+Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed.
+And have node version >= 18 installed and being used through nvm.
 
-## Project Structure
+1. Clone the repository: `git clone https://github.com/WarleyLopes/QAEngineeringChallenge2`
+2. In a new terminal window, navigate to `../backend/`
+3. Install the dependencies for the API with `yarn install`
+4. Start the API server with: `yarn start`
+5. In a new terminal window, navigate to `../native-app/`
+6. Install dependencies: `yarn install`
+7. Run the build with: `yarn detox:build`
+8. Run the tests with: `yarn detox:test`
 
-The project structure is organized as follows:
+Artifacts for the run will be generated in case of any failing tests inside the [artifacts](./artifacts/) folder.
 
-- `App.tsx`: The entry point of the Expo app, where the navigation is configured.
-- `components/`: Contains reusable components used throughout the app.
-- `app/`: Contains individual screens or pages/tabs of the app.
-- `data/`: Stores JSON files with machine and part data for evaluation.
+## Mobile Components Unit Testing
 
-## Screens and Features
+These tests ensure that individual components of the app function correctly and meet the expected behavior. The unit tests are run using the Jest framework, which provides a simple and efficient way to write and run tests in JavaScript or TypeScript and automatically generate code coverage.
 
-The app has the following screens and features:
+To run the unit tests for the mobile components, follow these steps:
 
-- **Machine Health**: Allows users to select a machine, part name, and part value, and calculates the health score of the machine.
+Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed.
+And have node version >= 18 installed and being used through nvm.
 
-## Adding Tests
+1. Clone the repository: `git clone https://github.com/WarleyLopes/QAEngineeringChallenge2`
+2. Make sure you are in `./native-app/`
+3. Install dependencies: `yarn install`
+4. Run the tests with: `yarn test`
 
-You are free to choose how you'd like to test this repo, think about options and approaches and build out (and document!) what you think would be an appropriate testing infrastructure. Hint: think about a combo of unit tests and integration tests, there is an android APK in the root of the exercise if it's helpful.
+## Pre-commit hooks
 
-## Customization
-
-If you would like, feel free to modify the app as needed.
-
-## Contributing
-
-In order to build the android app, it was necessary to add expo-constants as a dependency after having detox installed.
-In order to build the ios app, it is necessary to have pod installer available globally and go into the ios folder,
-and run pod install before running the ios build.
-
-We have set up pre-commit hooks that will run eslint, prettier, and jest for unit tests. Make sure they are all passing
-before you can proceed with your commit and push. In order to achieve the below requirement:
-
-> Regression Testing Strategy: The effectiveness of your strategy to enable regression testing for future releases.
-
-I would be setting up running the e2e detox tests on a CI environment. Smoke tests for every commit with a merge request open.
-And periodically at night running a full suite of tests on the development and/or staging environments/branches
-
-## Running the e2e tests
-
-In order to run the e2e, it is required:
-
- - Having all yarn packages dependencies installed with `yarn`
- - Having ios pods installed with `cd ios && pod install && cd ..` or run `yarn ios` before proceeding
- - Run `yarn detox` to run both the build and the tests
-    - Or first run `yarn detox:build`
-    - And then `yarn detox:test` to run the e2e detox tests
-
- <!-- * If testing on Android, a Pixel 3a android simulator running on API 31 and CPU arch x86_64 named `Pixel_3a_API_31_x86_64` on Android Studios' Virtual Device Manager
-    Or you can get around by creating it, if you have the dependencies installed locally, with the command `avdmanager create avd --name 'Pixel_3a_API_31_x86_64' --package "system-images;android-31;google_apis;x86_64" --tag google_apis --device pixel_3a` and `emulator -avd Pixel_3a_API_31_x86_64`. Still, it is necessary to have the sdk `system-images;android-31;google_apis;x86_64` installed previously either through command line or Android Studio. -->
- <!-- * If testing on Android, run `yarn e2e_android:build` to create an apk for detox assisted e2e testing.
- * If testing on iOS, running `yarn e2e_ios:build` to create the iOS build for detox assisted e2e testing. -->
-
-## Troubleshooting
-
-- To check artifacts of the detox e2e test runs, you can navigate to the artifacts folder
-after running tests and it will have a folder for your latest run containing logs,screenshots,
-and a video. The final test report in xml can be found in `artifacts/reports/test_results.xml`
-
-- When running e2e_android:test, if the error below happens:
-
-    > Test suite failed to run ChildProcessError: .../Library/Android/sdk/emulator/emulator -verbose -no-audio -no-boot-anim -read-only -port 16072 @Pixel_3a_API_31_x86_64` failed with code 1
-
-    Close all emulators open before trying to run the command again
-
-- There are currently issues when trying to run the detox build on release modes for both iOS and Android.
-
-    Therefore for the sake of the challenge's limited time, only iOS debug mode is supported with this fork.
-
-- To run the android on debug/development mode, a deeper dive is necessary on launching the app in a special way for android
-
-    As detox goes through reinstalling the app on the simulator but does not seem to be capable of launching it
-    An approach talked on https://github.com/wix/Detox/issues/3650#issuecomment-1292238936 in order to manually launch the app could solve it
-
+There is a pre-commit hook enabled under this folder to run [prettier](https://prettier.io/), [eslint](https://eslint.org/), and [jest](https://jestjs.io/) automatically on before being able to complete a commit. This allows an automatic forced run of those in order to makee sure the coode is formatted according to the defined rules of the project, eslint will enforce code quality and style guidelines according to configurations too, and jest will run the unit tests. This ensures that the codebase remains consistent, maintainable, and free of common errors as long as the tests are comprehensive and extent enough.

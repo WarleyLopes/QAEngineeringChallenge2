@@ -1,122 +1,78 @@
-# BellSant QA Engineer Coding Challenge
+# Mobile Test Automation for React Native Project
 
-Welcome to the BellSant QA Engineer coding challenge! This challenge is designed to assess your skills in creating testing tools, setting up testing infrastructure, and writing meaningful tests for our React Native application and API backend. Our goal is to evaluate your ability to ensure the application functions correctly and enable regression testing for each release.
+This repository showcases mobile test automation for a React Native project using the Detox framework. It also includes unit tests for components in the mobile app, as well as unit tests and test automation for the API.
 
-## Challenge Overview
+## Detox Demonstration
 
-### The Application
+![detox-demo](./native-app/artifacts/detox-demo.mov)
 
-The application you'll be working on is a tool for evaluating the health of various machines in an automobile manufacturing plant. This plant features a range of machines, each with specific data points that you will use to assess the condition of the production process.
+![detox-demo](./native-app/artifacts/detox-demo.mp4)
 
-#### Machines and Their Variables
+## Table of Contents
 
-1. **Welding Robots**
+- [Mobile Test Automation - Detox](./native-app/e2e/starter.test.js)
+- [Unit Tests for Components - Jest](./native-app/components/__tests__/MachineScore.test.tsx)
+- [Unit Tests for the API - Jest](./backend/__tests__/calculate.test.ts)
+- [API Test Automation - Axios Request](./backend/__tests__/api.test.ts)
+- [Detox Artifacts](./native-app/artifacts/)
+- [Jest Test Coverage from Unit Tests - Mobile App](./native-app/coverage/lcov-report/index.html)
+- [Jest Test Coverage from Unit Tests - API](./backend/coverage/lcov-report/index.html)
+- [Mobile Components/UI Snapshots](./native-app/components/__tests__/__snapshots__/)
+- [Coding Test Challenge](https://github.com/BellSantCodingChallenge/QAEngineeringChallenge2?tab=readme-ov-file#bellsant-qa-engineer-coding-challenge)
 
-   - Welding Robot Error Rate
-   - Welding Arm Vibration Level
-   - Electrode Wear
-   - Gas Shielding Pressure
-   - Welding Wire Feed Rate
-   - Arc Stability
-   - Weld Seam Width
-   - Cooling System Efficiency
+## Introduction
 
-2. **Painting Stations**
+In this repository, you will find a comprehensive set of tests for a React Native project. The tests cover both the mobile app and the API, ensuring the quality and reliability of the software.
 
-   - Paint Flow Rate
-   - Paint Pressure
-   - Paint Color Consistency
-   - Paint Nozzle Condition
+## Mobile Test Automation
 
-3. **Assembly Lines**
+The mobile test automation is implemented using the Detox framework. Detox provides a powerful and efficient way to write end-to-end tests in either JavaScript or TypeScript for React Native applications in order to run tests for both iOS and Android with the same code. The tests simulate user interactions and verify the expected behavior of the app.
 
-   - Part Alignment Accuracy
-   - Assembly Line Speed
-   - Component Fitting Tolerance
-   - Conveyor Belt Speed
+To run the mobile test automation, follow these steps:
 
-4. **Quality Control Stations**
-   - Inspection Camera Calibration
-   - Inspection Light Intensity
-   - Inspection Software Version
-   - Inspection Criteria Settings
+Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed.
+And have node version >= 18 installed and being used through nvm.
 
-### Time Limit
+1. Clone the repository: `git clone https://github.com/WarleyLopes/QAEngineeringChallenge2`
+2. In a new terminal window, navigate to `./backend/`
+3. Install the dependencies for the API with `yarn install`
+4. Start the API server with: `yarn start`
+5. In a new terminal window, navigate to `./native-app/`
+6. Install dependencies: `yarn install`
+7. Run the build with: `yarn detox:build`
+8. Run the tests with: `yarn detox:test`
 
-You are expected to spend approximately 3 hours on this challenge. While we understand that testing can be a never-ending task, we're interested in seeing how far you can get and how you prioritize tasks to maximize impact within the given time frame.
+Artifacts for the run will be generated in case of any failing tests inside the [artifacts](./native-app/artifacts/) folder.
 
-## Repository Structure
+## Mobile Components Unit Testing
 
-The repository is structured as follows:
+These tests ensure that individual components of the app function correctly and meet the expected behavior. The unit tests are run using the Jest framework, which provides a simple and efficient way to write and run tests in JavaScript or TypeScript and automatically generate code coverage.
 
-```
-├── native-app/
-│   ├── source code files...
-│   ├── README.md               # The README file for running the React Native Mobile app
-│   └── ...
-│
-├── backend/
-│   ├── source code files...
-│   ├── README.md               # The README file for running the API Backend
-│   └── ...
-│
-├── MachineHealth.apk           # The compiled android app for running on a device or emulator (if helpful)
-├── README.md                   # This README file
-```
+To run the unit tests for the mobile components, follow these steps:
 
-## Getting Started
+Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed.
+And have node version >= 18 installed and being used through nvm.
 
-1. Fork this repository to your GitHub account.
-2. Clone your forked repository to your local machine.
+1. Clone the repository: `git clone https://github.com/WarleyLopes/QAEngineeringChallenge2`
+2. Navigate to `./native-app/`
+3. Install dependencies: `yarn install`
+4. Run the tests with: `yarn test`
 
-## Running the App Locally
+## Tests for the API
 
-To run the Machine Health Evaluation app locally, you'll need to set up and run both the React Native app and the API backend separately. Each of the respective folders are in this director and each have their own README files to help you get started.
+In this section, you will find unit tests for the API and Test Automation using actual requests. These tests ensure that the API functions correctly and returns the expected results. The unit tests and the requests are also run using the Jest framework.
 
-To use the Machine Health Evaluation app locally, you'll need to keep both the API and the React Native app running simultaneously. It's recommended to open separate terminal/command windows for each and run them in parallel.
+To run the tests for the API, follow these steps:
 
-- In one terminal window, navigate to the `backend` folder and run the API backend.
-- In another terminal window, navigate to the `native-app` folder and run the React Native app.
+Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed.
+And have node version >= 18 installed and being used through nvm.
 
-Keep in mind that the React Native app relies on the API to fetch and calculate machine health data. Ensure that the API is accessible to the app for it to function correctly.
+1. Clone the repository: `git clone https://github.com/WarleyLopes/QAEngineeringChallenge2`
+2. Navigate to `./backend/`
+3. Install dependencies: `yarn install`
+4. Run the server with: `yarn start`
+5. In a separated termina, run the tests with: `yarn test`
 
-For specific details on running the API and React Native app, refer to their respective README files in their respective folders.
+## Pre-commit hooks
 
-## Your Tasks
-
-Your primary tasks for this challenge include:
-
-1. **Setting Up Testing Infrastructure**: Create a testing framework and environment for both the React Native application and the API backend.
-
-2. **Writing Unit Tests**: Write unit tests that cover critical functionality, including the correctness of calculations within the React Native app and the API backend. Ensure that these tests are easy to run.
-
-3. **Writing Integration Tests**: Include working integration tests for the React Native application and the API backend to ensure that various components interact correctly, and calculations produce accurate results. Additionally, if you find it helpful, there is an APK of the React Native app compiled and available in this root directiory for your use.
-
-4. **Documentation**: Provide clear and concise documentation on how to run the tests and any dependencies required.
-
-5. **Regression Testing**: Implement a basic regression testing strategy that can be run with each new release.
-
-## Submission Guidelines
-
-- Provide a link to your Git repository containing the updated project.
-- Include instructions on how to run any new tests as well as an overview of your approach.
-
-## Evaluation Criteria
-
-We will evaluate your coding challenge based on the following criteria:
-
-- **Test Variety**: The diversity of tests you've implemented, including unit tests to assess individual components and functions, as well as end-to-end click-through integration tests to ensure seamless interaction within the React Native application and the API backend.
-
-- **Code Quality**: The cleanliness and readability of your testing code.
-
-- **Documentation**: The clarity of your instructions on running tests and any dependencies.
-
-- **Regression Testing Strategy**: The effectiveness of your strategy to enable regression testing for future releases.
-
-## Contact Us
-
-If you have any questions or need clarification on any aspect of this challenge, please feel free to reach out to us.
-
-We look forward to seeing your contributions and assessing your QA engineering skills!
-
-Happy coding!
+For both `./backend/` and `./native-app/` I also took the extra step of adding a pre-commit hook to run [prettier](https://prettier.io/), [eslint](https://eslint.org/), and [jest](https://jestjs.io/) automatically on before being able to complete a commit. This allows an automatic forced run of those in order to makee sure the coode is formatted according to the defined rules of the project, eslint will enforce code quality and style guidelines according to configurations too, and jest will run the unit tests. This ensures that the codebase remains consistent, maintainable, and free of common errors as long as the tests are comprehensive and extent enough.

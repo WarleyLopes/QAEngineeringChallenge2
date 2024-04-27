@@ -1,84 +1,33 @@
-# BellSant Machine Health API
+# Test Automation for API
 
-Welcome to the BellSant Machine Health API! This API allows you to evaluate the health of various machines and their components based on provided data. This README provides instructions on how to set up and use the API.
+This repository showcases unit tests and test automation for an API.
 
-## Prerequisites
+## Table of Contents
 
-Before you get started, make sure you have the following prerequisites installed on your system:
+- [Unit Tests for the API - Jest](./__tests__/calculate.test.ts)
+- [API Test Automation - Axios Request](./__tests__/api.test.ts)
+- [Jest Test Coverage from Unit Tests - API](./coverage/lcov-report/index.html)
+- [Coding Test Challenge](https://github.com/BellSantCodingChallenge/QAEngineeringChallenge2?tab=readme-ov-file#bellsant-qa-engineer-coding-challenge)
 
-- Node.js: [Download Node.js](https://nodejs.org/)
-- Yarn (optional but recommended, can use NPM instead): [Install Yarn](https://classic.yarnpkg.com/en/docs/install/)
+## Introduction
 
-## Installation
+In this repository, you will find a few set of tests for an API. With the approach of unit tests and requests through Axios.
 
-Follow these steps to set up the BellSant Machine Health API:
+## Tests for the API
 
-1. Navigate to the project directory:
+In this section, you will find unit tests for the API and Test Automation using actual requests. These tests ensure that the API functions correctly and returns the expected results. The unit tests and the requests are also run using the Jest framework.
 
-   ```bash
-   cd api
-   ```
+To run the tests for the API, follow these steps:
 
-2. Install dependencies using Yarn (or npm if you prefer):
+Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed.
+And have node version >= 18 installed and being used through nvm.
 
-   ```bash
-   yarn
-   ```
+1. Clone the repository: `git clone https://github.com/WarleyLopes/QAEngineeringChallenge2`
+2. Make sure you are in `./backend/`
+3. Install dependencies: `yarn install`
+4. Run the server with: `yarn start`
+5. In a separated termina, run the tests with: `yarn test`
 
-## Usage
+## Pre-commit hooks
 
-### Starting the API
-
-To start the API, run the following command:
-
-```bash
-yarn start
-```
-
-The API will be accessible at `http://localhost:3001` by default. You can change the port or other configurations in the `app.ts` file.
-
-### Evaluating Machine Health
-
-You can evaluate the health of a machine by sending a POST request to the `/machine-health` endpoint. Here's an example using cURL:
-
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{
-  "machines": {
-    "weldingRobot": {
-      "errorRate": "0.5",
-      "vibrationLevel": "2.5"
-    }
-  }
-}' http://localhost:3001/machine-health
-```
-
-The response will include the machine name and its health score.
-
-### API Endpoints
-
-- `POST /machine-health`: Calculate the health of a machine based on provided data.
-
-## Testing
-
-You can add and run tests to ensure the correctness of the API. Follow these steps to add tests:
-
-1. Locate the "tests" folder
-
-2. Inside the "tests" folder, you can create test files for your code. You can use testing libraries like Jest, Mocha, or others to write your tests. There is a starter example test to help you get started.
-
-3. To run the tests, use the following command:
-
-   ```bash
-   yarn test
-   ```
-
-## Customization
-
-You can customize machine data and health evaluation logic by modifying the `machineData.json` file and the calculation functions in `app.ts`.
-
-## Contributing
-
-We have set up precommit hooks that will execute prettier, eslint, and jest. Which will automatically require that all tests pass before you can commit and push your changes.
-
-For the sake of this challenge, that will be my approach to the below task:
-> 5. **Regression Testing**: Implement a basic regression testing strategy that can be run with each new release.
+This folder has a pre-commit hook enabled to run [prettier](https://prettier.io/), [eslint](https://eslint.org/), and [jest](https://jestjs.io/) automatically on before being able to complete a commit. This allows an automatic forced run of those in order to makee sure the coode is formatted according to the defined rules of the project, eslint will enforce code quality and style guidelines according to configurations too, and jest will run the unit tests. This ensures that the codebase remains consistent, maintainable, and free of common errors as long as the tests are comprehensive and extent enough.
