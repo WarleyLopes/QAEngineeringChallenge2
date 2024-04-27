@@ -9,6 +9,8 @@ This repository showcases mobile test automation for a React Native project usin
 ## Table of Contents
 
 - [Mobile Test Automation - Detox](./native-app/e2e/starter.test.js)
+- [Page Object Modal for Mobile Tests - machineStateTab](./native-app/e2e/test-assets/screens/machineStateTab.ts)
+- [Page Object Modal for Mobile Tests - logPartTab](./native-app/e2e/test-assets/screens/logPartTab.ts)
 - [Unit Tests for Components - Jest](./native-app/components/__tests__/MachineScore.test.tsx)
 - [Unit Tests for the API - Jest](./backend/__tests__/calculate.test.ts)
 - [API Test Automation - Axios Request](./backend/__tests__/api.test.ts)
