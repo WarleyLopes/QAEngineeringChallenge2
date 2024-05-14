@@ -8,20 +8,11 @@ beforeAll(async () => {
 });
 
 // eslint-disable-next-line no-undef
-beforeEach(async () => {
+afterEach(async () => {
+  await device.reloadReactNative();
   if (!(await elementIsVisible(MACHINE_STATE_TAB.PLEASE_LOG_PART_ELEMENT_BY_ID))) {
     await waitFor(
       MACHINE_STATE_TAB.RESET_MACHINE_DATA_ELEMENT_BY_TEXT
     ).toBeVisible();
   }
-});
-
-// eslint-disable-next-line no-undef
-afterEach(async () => {
-  await device.reloadReactNative();
-});
-
-// eslint-disable-next-line no-undef
-afterAll(async () => {
-  await device.terminateApp();
 });

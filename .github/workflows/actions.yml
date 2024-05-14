@@ -25,7 +25,7 @@ jobs:
             native-app/node_modules
             backend/node_modules
             native-app/ios/build
-          key: ${{ runner.os }}-dependencies-${{ hashFiles('native-app/yarn.lock') }}-${{ hashFiles('backend/yarn.lock') }}-${{ hashFiles('native-app/ios/Podfile.lock') }}
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('native-app/yarn.lock') }}-${{ hashFiles('backend/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-dependencies
 
