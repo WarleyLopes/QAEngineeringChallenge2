@@ -2,6 +2,11 @@
 
 This repository showcases mobile test automation for a React Native project using the Detox framework. It also includes unit tests for components in the mobile app, as well as unit tests and test automation for the API.
 
+## GitHub Actions - Detox E2E Continuous Testing / CI Pipeline
+
+[![CI](https://github.com/WarleyLopes/QAEngineeringChallenge2/actions/workflows/actions.yml/badge.svg)](https://github.com/WarleyLopes/QAEngineeringChallenge2/actions/workflows/actions.yml)
+
+
 ## Detox iOS Demonstration
 
 ![Detox iOS Demonstration](./native-app/artifacts/detox-demo.gif)

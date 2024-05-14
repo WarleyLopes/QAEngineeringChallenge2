@@ -1,0 +1,129 @@
+name: detox_e2e
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 6 * * 1"
+
+env:
+  HOMEBREW_NO_AUTO_UPDATE: 1
+  HOMEBREW_NO_INSTALL_CLEANUP: 1
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # - name: Gradle cache
+      #   uses: gradle/actions/setup-gradle@v3
+
+      - name: Cache
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            native-app/node_modules
+            backend/node_modules
+            native-app/ios/Pods
+            native-app/ios/build
+            ~/Library/Developer/Xcode/DerivedData
+            native-app/.expo
+            ~/Library/Caches/CocoaPods
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('native-app/yarn.lock') }}-${{ hashFiles('backend/yarn.lock') }}-${{ hashFiles('native-app/ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-dependencies
+
+      # - name: Set up JDK 17
+      #   uses: actions/setup-java@v2
+      #   with:
+      #     java-version: "17"
+      #     distribution: "adopt"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: native-app/.nvmrc
+
+      - name: Install dependencies
+        run: |
+          cd native-app
+          yarn --frozen-lockfile --prefer-offline
+          yarn start &
+          sleep 5
+
+      - name: Start API server in background
+        run: |
+          cd backend
+          yarn --frozen-lockfile --prefer-offline
+          yarn start &
+          sleep 5
+
+      - name: Install CocoaPods
+        run: cd native-app/ios ; pod install ; cd -
+
+      # - name: Build android binary
+      #   run: |
+      #     cd native-app
+      #     echo 'ANDROID_BINARY_READY=false' >> $GITHUB_ENV
+      #     yarn detox build --configuration android.debug && echo 'ANDROID_BINARY_READY=true' >> $GITHUB_ENV
+      #     sleep 30
+
+      - name: Build ios binary
+        run: |
+          cd native-app
+          echo 'IOS_BINARY_READY=false' >> $GITHUB_ENV
+          yarn detox build --configuration ios.debug && echo 'IOS_BINARY_READY=true' >> $GITHUB_ENV
+          sleep 15
+
+      # - name: Wait for binaries
+      #   run: |
+      #     timeout=180
+      #     end=$((SECONDS+timeout))
+
+      #     while [ $SECONDS -lt $end ]; do
+      #       echo "Checking if binaries are ready..."
+
+      #       if [ "$ANDROID_BINARY_READY" = "true" ] && [ "$IOS_BINARY_READY" = "true" ]; then
+      #         echo "All binaries are built."
+      #         break
+      #       fi
+
+      #       echo "Checking again in 30 seconds..."
+      #       sleep 30
+      #     done
+
+      #     # Final check if still not ready
+      #     if [ "$ANDROID_BINARY_READY" != "true" ] || [ "$IOS_BINARY_READY" != "true" ]; then
+      #       echo "Final check: binaries not complete within the timeout period."
+      #       exit 1
+      #     fi
+
+      # - name: Get device name
+      #   id: device
+      #   run: |
+      #     AVD_NAME=$(node -p "require('./native-app/.detoxrc.js').devices.emulator.device.avdName")
+      #     echo "AVD_NAME=$AVD_NAME" >> $GITHUB_ENV
+
+      # - name: Run android Detox tests
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 31
+      #     arch: x86_64
+      #     avd-name: ${{ env.AVD_NAME }}
+      #     emulator-boot-timeout: 1000
+      #     script: cd native-app && yarn detox:test:android
+
+      - name: Run ios Detox tests
+        run: cd native-app && yarn detox:test:ios
+
+      - name: Upload artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: detox-artifacts
+          path: native-app/artifacts/reports/
