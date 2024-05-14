@@ -59,9 +59,6 @@ export class LOG_PART_TAB {
   static async setPartValue(partValue: string): Promise<void> {
     await waitFor(this.PART_VALUE_INPUT_ELEMENT_BY_ID).toBeVisible();
     await this.PART_VALUE_INPUT_ELEMENT_BY_ID.replaceText(partValue + '\n');
-    if (RUNNING_IOS) {
-      await element(by.text('Log Part')).atIndex(0).tap();
-    }
   }
 
   static async savePart(): Promise<void> {
@@ -75,9 +72,9 @@ export class LOG_PART_TAB {
     partName: string,
     partValue: string
   ): Promise<void> {
+    await this.setPartValue(partValue);
     await this.setMachineName(machineName);
     await this.setPartName(partName);
-    await this.setPartValue(partValue);
     await this.savePart();
   }
 

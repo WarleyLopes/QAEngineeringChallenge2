@@ -6,11 +6,11 @@ This repository showcases mobile test automation for a React Native project usin
 
 ## Detox iOS Demonstration
 
-![Detox iOS Demonstration](./artifacts/detox-demo.gif)
+![Detox iOS Demonstration](./e2e/test-assets//detox-demo.gif)
 
 ## Detox Android Demonstration
 
-![Detox Android Demonstration](./artifacts/detox_android_demo.gif)
+![Detox Android Demonstration](./e2e/test-assets//detox_android_demo.gif)
 
 ## Table of Contents
 
