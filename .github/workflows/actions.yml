@@ -7,10 +7,6 @@ on:
   schedule:
     - cron: "0 6 * * 1"
 
-env:
-  HOMEBREW_NO_AUTO_UPDATE: 1
-  HOMEBREW_NO_INSTALL_CLEANUP: 1
-
 jobs:
   test:
     runs-on: macos-latest
@@ -33,6 +29,8 @@ jobs:
             ~/Library/Developer/Xcode/DerivedData
             native-app/.expo
             ~/Library/Caches/CocoaPods
+            ~/Library/Caches/Homebrew
+            /usr/local/Homebrew
           key: ${{ runner.os }}-dependencies-${{ hashFiles('native-app/yarn.lock') }}-${{ hashFiles('backend/yarn.lock') }}-${{ hashFiles('native-app/ios/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-dependencies
@@ -55,6 +53,14 @@ jobs:
           yarn --frozen-lockfile --prefer-offline
           yarn start &
           sleep 5
+
+      - name: Install macOS dependencies
+        run: |
+          brew tap wix/brew
+          brew install applesimutils
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
 
       - name: Start API server in background
         run: |
