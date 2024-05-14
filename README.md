@@ -2,13 +2,18 @@
 
 This repository showcases mobile test automation for a React Native project using the Detox framework. It also includes unit tests for components in the mobile app, as well as unit tests and test automation for the API.
 
-## Detox Demonstration
+## Detox iOS Demonstration
 
-![Detox Demonstration](./native-app/artifacts/detox-demo.gif)
+![Detox iOS Demonstration](./native-app/artifacts/detox-demo.gif)
+
+## Detox Android Demonstration
+
+![Detox Android Demonstration](./native-app/artifacts/detox_android_demo.gif)
 
 ## Table of Contents
 
-- [Mobile Test Automation - Detox](./native-app/e2e/starter.test.js)
+- [Mobile Test Automation - Detox - Smoke Tests](./native-app/e2e/smoke.test.js)
+- [Mobile Test Automation - Detox - Other Tests](./native-app/e2e/other.test.js)
 - [Page Object Modal for Mobile Tests - machineStateTab](./native-app/e2e/test-assets/screens/machineStateTab.ts)
 - [Page Object Modal for Mobile Tests - logPartTab](./native-app/e2e/test-assets/screens/logPartTab.ts)
 - [Unit Tests for Components - Jest](./native-app/components/__tests__/MachineScore.test.tsx)

@@ -3,24 +3,28 @@ import { selectPickerValue } from '../utils/interactions';
 import { PICKER_ELEMENTS } from '../components/picker';
 import { elementIsVisible } from '../utils/interactions';
 
+const RUNNING_IOS = device.getPlatform() === 'ios';
+
 export class LOG_PART_TAB {
-  static readonly SCREEN_NAME: Detox.IndexableNativeElement = element(
-    by.text('Log Part')
+  static readonly TAB_TITLE: Detox.IndexableNativeElement = element(
+    by.id('LogPartTab')
   );
   static readonly PART_VALUE_INPUT_ELEMENT_BY_ID: Detox.IndexableNativeElement =
-    element(by.id('ComponentEditScreenPartValueInput'));
+    device.getPlatform() === 'ios'
+      ? element(by.id('ComponentEditScreenPartValueInput'))
+      : element(by.type('android.widget.EditText'));
   static readonly SAVE_BUTTON_ELEMENT_BY_TEXT: Detox.IndexableNativeElement =
-    element(by.text('Save'));
+    RUNNING_IOS ? element(by.text('Save')) : element(by.text('SAVE'));
   static readonly SAVE_SUCCESSFUL_ELEMENT_BY_ID: Detox.IndexableNativeElement =
     element(by.id('ComponentEditScreenInfoSavedText'));
 
   static async navigateTo(): Promise<void> {
     if (
-      !(await elementIsVisible(this.SCREEN_NAME.atIndex(1))) &&
-      (await elementIsVisible(this.SCREEN_NAME.atIndex(0)))
+      !(await elementIsVisible(this.PART_VALUE_INPUT_ELEMENT_BY_ID)) &&
+      (await elementIsVisible(this.TAB_TITLE))
     ) {
-      await this.SCREEN_NAME.atIndex(0).tap();
-      await waitFor(this.SCREEN_NAME.atIndex(1)).toBeVisible();
+      await this.TAB_TITLE.tap();
+      await waitFor(this.PART_VALUE_INPUT_ELEMENT_BY_ID).toBeVisible();
     }
   }
 

@@ -2,13 +2,18 @@
 
 This repository showcases mobile test automation for a React Native project using the Detox framework. It also includes unit tests for components in the mobile app, as well as unit tests and test automation for the API.
 
-## Detox Demonstration
+## Detox iOS Demonstration
 
-![Detox Demonstration](./artifacts/detox-demo.gif)
+![Detox iOS Demonstration](./artifacts/detox-demo.gif)
+
+## Detox Android Demonstration
+
+![Detox Android Demonstration](./artifacts/detox_android_demo.gif)
 
 ## Table of Contents
 
-- [Mobile Test Automation - Detox](./e2e/starter.test.js)
+- [Mobile Test Automation - Detox - Smoke Tests](./e2e/smoke.test.js)
+- [Mobile Test Automation - Detox - Other Tests](./e2e/other.test.js)
 - [Page Object Modal for Mobile Tests - machineStateTab](./e2e/test-assets/screens/machineStateTab.ts)
 - [Page Object Modal for Mobile Tests - logPartTab](./e2e/test-assets/screens/logPartTab.ts)
 - [Unit Tests for Components - Jest](./components/__tests__/MachineScore.test.tsx)
@@ -36,8 +41,10 @@ And have node version >= 18 installed and being used through nvm.
 4. Start the API server with: `yarn start`
 5. In a new terminal window, navigate to `../native-app/`
 6. Install dependencies: `yarn install`
-7. Run the build with: `yarn detox:build`
-8. Run the tests with: `yarn detox:test`
+7. To test iOS, run the build with: `yarn detox:build:ios`
+8. To test iOS, run the tests with: `yarn detox:test:ios`
+9. To test Android, run the build with: `yarn detox:build:android`
+10. To test Android, run the tests with: `yarn detox:test:android`
 
 Artifacts for the run will be generated in case of any failing tests inside the [artifacts](./artifacts/) folder.
 

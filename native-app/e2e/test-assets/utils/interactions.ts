@@ -8,14 +8,23 @@ export const selectPickerValue = async (
   index: number | null = null,
   value: string
 ): Promise<void> => {
-  if (index === null) {
-    await element(by.id(touchableId)).tap();
-    await element(by.id(pickerId)).setColumnToValue(column, value);
-    await element(by.id(doneId)).tap();
+  if (device.getPlatform() === 'ios') {
+    if (index === null) {
+      await element(by.id(touchableId)).tap();
+      await element(by.id(pickerId)).setColumnToValue(column, value);
+      await element(by.id(doneId)).tap();
+    } else {
+      await element(by.id(touchableId)).atIndex(index).tap();
+      await element(by.id(pickerId)).atIndex(0).setColumnToValue(column, value);
+      await element(by.id(doneId)).atIndex(0).tap();
+    }
   } else {
-    await element(by.id(touchableId)).atIndex(index).tap();
-    await element(by.id(pickerId)).atIndex(0).setColumnToValue(column, value);
-    await element(by.id(doneId)).atIndex(0).tap();
+    await element(
+      by.type('android.widget.TextView').and(by.text('Select a machine'))
+    )
+      .atIndex(0)
+      .tap();
+    await element(by.text(value)).tap();
   }
 };
 
@@ -54,5 +63,15 @@ export async function validateText(
 ): Promise<void> {
   if (text !== expectedText) {
     throw new Error(`Expected text: ${expectedText}, but got: ${text}`);
+  }
+}
+
+export async function getElementByText(
+  text: string
+): Promise<Detox.IndexableNativeElement | Detox.NativeElement> {
+  if (device.getPlatform() === 'ios') {
+    return element(by.text(text));
+  } else {
+    return element(by.type('android.widget.TextView').and(by.text(text)));
   }
 }

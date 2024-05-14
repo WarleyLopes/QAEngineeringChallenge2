@@ -1,14 +1,13 @@
-import {Button, Platform, StyleSheet} from 'react-native';
-import {Text, View} from '../../components/Themed';
-import {Link, useFocusEffect} from 'expo-router';
+import { Button, Platform, StyleSheet } from 'react-native';
+import { Text, View } from '../../components/Themed';
+import { Link, useFocusEffect } from 'expo-router';
 import axios from 'axios';
-import {useMachineData} from '../useMachineData';
-import {useCallback, useState} from 'react';
-import {PartsOfMachine} from '../../components/PartsOfMachine';
-import {MachineScore} from '../../components/MachineScore';
+import { useMachineData } from '../useMachineData';
+import { useCallback, useState } from 'react';
+import { PartsOfMachine } from '../../components/PartsOfMachine';
+import { MachineScore } from '../../components/MachineScore';
 
-let apiUrl: string =
-  'https://fancy-dolphin-65b07b.netlify.app/api/machine-health';
+let apiUrl: string = 'https://fancy-dolphin-65b07b.netlify.app/api/machine-health';
 
 if (__DEV__) {
   apiUrl = `http://${
@@ -17,20 +16,20 @@ if (__DEV__) {
 }
 
 export default function StateScreen() {
-  const {machineData, resetMachineData, loadMachineData, setScores} =
+  const { machineData, resetMachineData, loadMachineData, setScores } =
     useMachineData();
 
   //Doing this because we're not using central state like redux
   useFocusEffect(
     useCallback(() => {
       loadMachineData();
-    }, []),
+    }, [])
   );
 
   const calculateHealth = useCallback(async () => {
     try {
       const response = await axios.post(apiUrl, {
-        machines: machineData?.machines,
+        machines: machineData?.machines
       });
 
       if (response.data?.factory) {
@@ -43,7 +42,7 @@ export default function StateScreen() {
           error.toString() === 'AxiosError: Network Error'
             ? 'Is the api server started?'
             : error
-        }`,
+        }`
       );
     }
   }, [machineData]);
@@ -52,7 +51,7 @@ export default function StateScreen() {
     <View style={styles.container}>
       <View style={styles.separator} />
       {!machineData && (
-        <Link href='/two' style={styles.link}>
+        <Link testID="MachineStatePleaseLogPart" href="/two" style={styles.link}>
           <Text style={styles.linkText}>
             Please log a part to check machine health
           </Text>
@@ -78,8 +77,8 @@ export default function StateScreen() {
           />
           <View
             style={styles.separator}
-            lightColor='#eee'
-            darkColor='rgba(255,255,255,0.1)'
+            lightColor="#eee"
+            darkColor="rgba(255,255,255,0.1)"
           />
           <Text style={styles.title}>Factory Health Score</Text>
           <Text style={styles.text}>
@@ -103,15 +102,20 @@ export default function StateScreen() {
       )}
       <View
         style={styles.separator}
-        lightColor='#eee'
-        darkColor='rgba(255,255,255,0.1)'
+        lightColor="#eee"
+        darkColor="rgba(255,255,255,0.1)"
       />
-      <Button title='Calculate Health' onPress={calculateHealth} />
+      <Button
+        testID="MachineStateCalculateHealthButton"
+        title="Calculate Health"
+        onPress={calculateHealth}
+      />
       <View style={styles.resetButton}>
         <Button
-          title='Reset Machine Data'
+          testID="MachineStateResetMachineDataButton"
+          title="Reset Machine Data"
           onPress={async () => await resetMachineData()}
-          color='#FF0000'
+          color="#FF0000"
         />
       </View>
     </View>
@@ -121,30 +125,30 @@ export default function StateScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   title2: {
     fontSize: 17,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   separator: {
     marginVertical: 20,
     height: 1,
-    width: '80%',
+    width: '80%'
   },
   text: {},
   link: {
-    paddingBottom: 15,
+    paddingBottom: 15
   },
   linkText: {
     fontSize: 14,
-    color: '#2e78b7',
+    color: '#2e78b7'
   },
   resetButton: {
-    marginTop: 10,
-  },
+    marginTop: 10
+  }
 });
