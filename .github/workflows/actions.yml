@@ -24,7 +24,6 @@ jobs:
           path: |
             native-app/node_modules
             backend/node_modules
-            native-app/ios/Pods
             native-app/ios/build
             ~/Library/Developer/Xcode/DerivedData
             native-app/.expo
