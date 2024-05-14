@@ -35,18 +35,19 @@ The mobile test automation is implemented using the Detox framework. Detox provi
 To run the mobile test automation, follow these steps:
 
 Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed.
-And have node version >= 18 installed and being used through nvm.
 
 1. Clone the repository: `git clone https://github.com/WarleyLopes/QAEngineeringChallenge2`
 2. In a new terminal window, navigate to `../backend/`
-3. Install the dependencies for the API with `yarn install`
-4. Start the API server with: `yarn start`
-5. In a new terminal window, navigate to `../native-app/`
-6. Install dependencies: `yarn install`
-7. To test iOS, run the build with: `yarn detox:build:ios`
-8. To test iOS, run the tests with: `yarn detox:test:ios`
-9. To test Android, run the build with: `yarn detox:build:android`
-10. To test Android, run the tests with: `yarn detox:test:android`
+3. Run `nvm install`
+4. Install the dependencies for the API with `yarn install`
+5. Start the API server with: `yarn start`
+6. In a new terminal window, navigate to `../native-app/`
+7. Run `nvm install`
+8. Install dependencies: `yarn install`
+9. To test iOS, run the build with: `yarn detox:build:ios`
+10. To test iOS, run the tests with: `yarn detox:test:ios`
+11. To test Android, run the build with: `yarn detox:build:android`
+12. To test Android, run the tests with: `yarn detox:test:android`
 
 Artifacts for the run will be generated in case of any failing tests inside the [artifacts](./artifacts/) folder.
 

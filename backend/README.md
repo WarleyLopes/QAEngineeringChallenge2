@@ -20,13 +20,13 @@ In this section, you will find unit tests for the API and Test Automation using 
 To run the tests for the API, follow these steps:
 
 Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed.
-And have node version >= 18 installed and being used through nvm.
 
 1. Clone the repository: `git clone https://github.com/WarleyLopes/QAEngineeringChallenge2`
 2. Make sure you are in `./backend/`
-3. Install dependencies: `yarn install`
-4. Run the server with: `yarn start`
-5. In a separated termina, run the tests with: `yarn test`
+3. Run `nvm install`
+4. Install dependencies: `yarn install`
+5. Run the server with: `yarn start`
+6. In a separated termina, run the tests with: `yarn test`
 
 ## Pre-commit hooks
 
