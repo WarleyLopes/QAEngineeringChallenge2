@@ -126,4 +126,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: detox-artifacts
-          path: native-app/artifacts/
+          path: native-app/e2e/test-assets/artifacts/

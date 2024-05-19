@@ -11,7 +11,7 @@ module.exports = {
     [
       'jest-junit',
       {
-        outputDirectory: '<rootDir>/artifacts/reports/',
+        outputDirectory: '<rootDir>/e2e/test-assets/artifacts/reports/',
         outputName: 'test_results.xml'
       }
     ]

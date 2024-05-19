@@ -74,5 +74,14 @@ module.exports = {
       device: 'emulator',
       app: 'android.debug'
     }
+  },
+  artifacts: {
+    rootDir: 'e2e/test-assets/artifacts/',
+    plugins: {
+      screenshot: {
+        shouldTakeAutomaticSnapshots: true,
+        keepOnlyFailedTestsArtifacts: true
+      }
+    }
   }
 };

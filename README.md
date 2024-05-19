@@ -22,7 +22,7 @@ This repository showcases mobile test automation for a React Native project usin
 - [Unit Tests for Components - Jest](./native-app/components/__tests__/MachineScore.test.tsx)
 - [Unit Tests for the API - Jest](./backend/__tests__/calculate.test.ts)
 - [API Test Automation - Axios Request](./backend/__tests__/api.test.ts)
-- [Detox Artifacts](./native-app/artifacts/)
+- [Detox Artifacts](./native-app/e2e/test-assets/artifacts/)
 - [Jest Test Coverage from Unit Tests - Mobile App](./native-app/coverage/lcov-report/index.html)
 - [Jest Test Coverage from Unit Tests - API](./backend/coverage/lcov-report/index.html)
 - [Mobile Components/UI Snapshots](./native-app/components/__tests__/__snapshots__/)
@@ -48,10 +48,15 @@ Make sure you have [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#instal
 6. In a new terminal window, navigate to `./native-app/`
 7. Run `nvm install`
 8. Install dependencies: `yarn install`
-9. Run the build with: `yarn detox:build`
-10. Run the tests with: `yarn detox:test`
+9. Run the build for iOS with: `yarn detox:build:ios`
+10. Run the tests for iOS with: `yarn detox:test:ios`
+11. For Android, make sure you have an android emulator in Android Studio named as `Pixel_3a_API_31_x86_64`
+12. Make sure the android emulator is created with the API_31 and x86_64 architecture
+13. Run the build for Android with: `yarn detox:build:android`
+14. Run the tests for Android with: `yarn detox:test:android`
 
-Artifacts for the run will be generated in case of any failing tests inside the [artifacts](./native-app/artifacts/) folder.
+
+Artifacts for the run will be generated in case of any failing tests inside the [artifacts](./native-app/e2e/test-assets/artifacts/) folder.
 
 ## Mobile Components Unit Testing
 

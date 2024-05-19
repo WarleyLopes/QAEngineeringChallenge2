@@ -133,7 +133,7 @@ dist
 .netlify
 
 # detox artifacts
-native-app/artifacts
+**/artifacts/*
 
 # snapshot artifact
 native-app/components/__tests__/__snapshots__/**.snap
