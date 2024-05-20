@@ -25,7 +25,7 @@
       },
       "package": "com.machinehealth.app"
     },
-    "plugins": ["expo-router", "@config-plugins/detox"],
+    "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true
     }
